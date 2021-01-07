@@ -107,6 +107,8 @@ require_once '../Interfaces/user/ordersPage.php';
                 <tbody>
                 <?php
                 $total =0;
+
+                if(count(@$allMealInOneOrder) > 0){
                 for($i=0;$i<count(@$allMealInOneOrder);$i++){ ?>
                 <tr>
                     <td width="30px"><?php echo ($i+1)?></td>
@@ -146,6 +148,9 @@ require_once '../Interfaces/user/ordersPage.php';
 
                 <?php
                 $total +=$allMealInOneOrder[$i]['quantity'] * $products->selectWithId($allMealInOneOrder[$i]['product_id'])[0]['price'];
+                }}else{
+                    echo '<tr>
+                        </tr>';
                 } ?>
                 <tr class="table-dark" style="height: 50px">
                     <td colspan="3">اجمالي المبلغ</td>

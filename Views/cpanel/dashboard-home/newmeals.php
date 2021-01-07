@@ -85,7 +85,7 @@ require_once('includes/main.php');
                     </tbody>
                 </table>
 
-                <input type="submit" value="اضافة وجبة جديدة" class="btn btn-primary" name="register" >
+                <input type="submit" value="اضافة وجبة جديدة" class="btn btn-primary" name="registermeal" >
             </form>
         </div>
     </div>

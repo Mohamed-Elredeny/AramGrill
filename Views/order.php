@@ -59,17 +59,17 @@ require_once '../Interfaces/user/ordersPage.php';
                             <div class="card-body" >
                                <table style="width: 100%;text-align: center;font-size: 20px;font-weight: bolder">
                                    <tr>
-                                       <td>
+                                       <td style="width: 50px;">
                                            <?php echo $counter?>
 
                                        </td>
-                                       <td>
+                                       <td style="width: 80px;">
                                            <?php echo $product['name']?>
                                        </td>
-                                       <td>
+                                       <td style="width: 80px;">
                                            <?php echo $product['price'] . "جنية " ?>
                                        </td>
-                                       <td>
+                                       <td style="width: 50px;">
                                            <input type="hidden" name="productId" id="productId<?php echo $product['id'] ?>" value="<?php echo $product['id'] ?>">
                                            <input type="button" class="btn btn-danger" value="تسجيل" id="btn<?php echo $product['id'] ?>">
                                        </td>
@@ -92,12 +92,12 @@ require_once '../Interfaces/user/ordersPage.php';
         <div class="table-container col-7"  id="SelStdDep">
             <table dir="rtl" class="table"  style="height: 500px">
                 <thead class="table-dark">
-                    <tr>
+                    <tr style="height: 70px;">
                         <th>الرقم</th>
                         <th>الوجبة</th>
                         <th>العدد</th>
-                        <th>الحجم</th>
-                        <th>سعر الواحد</th>
+<!--                        <th>الحجم</th>
+-->                        <th>سعر الواحد</th>
                         <th>السعر الكلي</th>
                         <th>
                             حذف
@@ -124,18 +124,18 @@ require_once '../Interfaces/user/ordersPage.php';
                         $sizes =  $products->selectWithId($allMealInOneOrder[$i]['product_id'])[0]['size'];
                         $sizes =  explode("&", $sizes);
                     ?>
-                    <td>
+                  <!--  <td>
                         <select name="" id="" style="width: 100px">
                             <?php
-                            $sizeCounter =0;
+/*                            $sizeCounter =0;
                             foreach ($sizes as $size){
-                                ?>
-                            <option value="<?php echo $sizeCounter?>"><?php echo $size?></option>
+                                */?>
+                            <option value="<?php /*echo $sizeCounter*/?>"><?php /*echo $size*/?></option>
                             <?php
-                                $sizeCounter++;
-                            } ?>
+/*                                $sizeCounter++;
+                            } */?>
                         </select>
-                    </td>
+                    </td>-->
                     <td><?php echo  $products->selectWithId($allMealInOneOrder[$i]['product_id'])[0]['price']?></td>
 
                     <td><?php echo  $allMealInOneOrder[$i]['quantity'] * $products->selectWithId($allMealInOneOrder[$i]['product_id'])[0]['price']?></td>

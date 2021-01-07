@@ -3,7 +3,8 @@ require_once('includes/header.php');
 require_once('includes/nav.php');
 require_once('includes/main.php');
 require('../../../Interfaces/admin/dashboardProducts.php');
-$users = $usersController->selectWithForignKey($_GET['id']);
+
+$users = $usersControllers->selectWithForignKey($_GET['id']);
 
 if(@$users){
     if(@count($users) > 0){

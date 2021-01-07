@@ -14,7 +14,7 @@ require_once('includes/nav.php');
             <br>
         </div>
         <div class="content-body" >
-            <img  style="width:500px;margin-top:20px;align-terms:center;margin-right:500px;margin-top:60px"src="../../site/assets/img/image.svg">
+            <img  style="width:700px;margin-top:20px;align-terms:center;margin-right:300px;margin-top:60px;height: 600px"src="../../../Resources/user/images/bg.jpg">
             <!--/ Sell Orders & Buy Order -->
             <!-- Active Orders -->
            <!--

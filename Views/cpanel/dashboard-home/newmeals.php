@@ -44,8 +44,8 @@ require_once('includes/main.php');
                         </td>
                     </tr>
 
-
-                    <tr>
+<!-- الحجوم  -->
+                  <!--  <tr>
                         <th scope="row" colspan="2">
                             <center>
                                 قم بوضع علامه & بين الاسماء والاسعار للفصل بينهم.
@@ -79,7 +79,7 @@ require_once('includes/main.php');
                             </table>
                         </td>
                     </tr>
-
+-->
 
 
                     </tbody>

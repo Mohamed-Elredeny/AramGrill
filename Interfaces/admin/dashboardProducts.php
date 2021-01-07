@@ -3,6 +3,7 @@ require_once '../../../Controllers/admin/ProductsController.php';
 $usersController = new ProductsController();
 $users = $usersController->selectAll();
 
+
 if(isset($_POST['register'])){
     $name = $_POST['name'];
     $price = $_POST['price'];

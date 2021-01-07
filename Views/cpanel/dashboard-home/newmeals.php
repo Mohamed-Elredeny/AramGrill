@@ -1,6 +1,8 @@
 <?php
 require('../../../Interfaces/admin/dashboardCategories.php');
 require('../../../Interfaces/admin/dashboardProducts.php');
+$usersControllerr = new CategoriesController();
+$userss = $usersControllerr->selectAll();
 
 
 require_once('includes/header.php');
@@ -20,7 +22,7 @@ require_once('includes/main.php');
                         <th scope="row">فئة الوجبة</th>
                         <td>
                             <select class="btn btn-outline-primary" name="category_id" id="category_id" style="text-align: right;width:170px">
-                                <?php foreach ($users as $category){?>
+                                <?php foreach ($userss as $category){?>
                                 <option value="<?php echo $category['id']?>"><?php echo $category['name']?></option>
                                 <?php } ?>
                             </select>

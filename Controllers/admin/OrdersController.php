@@ -1,6 +1,9 @@
 <?php
 require_once 'CurrentOrderController.php';
+require_once 'ProductsController.php';
 $CurrentOrderController = new CurrentOrderController();
+$products  = new ProductsController();
+//selectSizeWithId to get total price
 class OrdersController
 {
     private $host="localhost";
@@ -23,19 +26,47 @@ class OrdersController
             return 2;
         }
     }
+    public function deleteWithId(){
+        $deleteSql = "delete from currentorder";
+        $query =mysqli_query($this->con,$deleteSql);
+        if($query){
+            echo "Done";
+        }else{
+            echo "Statement Error";
+        }
+    }
+
 }
 
-$OrdersController = new OrdersController();
-$curentOrder = $CurrentOrderController->selectAll();
+function OnClickAddOrder(){
+    $CurrentOrderController = new CurrentOrderController();
+    $products  = new ProductsController();
+    $OrdersController = new OrdersController();
+    $curentOrder = $CurrentOrderController->selectAll();
+    $totalPrice=0;
 
-for($i=0;$i<count($curentOrder);$i++) {
-    $productsArr [$i]= $curentOrder[$i]['id'];
-    $quantityArr [$i] = $curentOrder[$i]['quantity'];
+    for($i=0;$i<count($curentOrder);$i++) {
+        $productsArr [$i]= $curentOrder[$i]['id'];
+        $quantityArr [$i] = $curentOrder[$i]['quantity'];
+        $priceArr [$i] = $products->selectPriceWithId($curentOrder[$i]['product_id']);
+
+        $totalPrice+= $priceArr[$i] *    $quantityArr [$i];
+    }
+
+
+    $products = implode('&',$productsArr);
+    $amounts = implode('&',$quantityArr);
+    $size = 's&s&s';
+
+    $OrdersController->addOrder($products,$amounts,$totalPrice,$size);
+    $OrdersController->deleteWithId();
 }
-
-
-$products = implode('&',$productsArr);
-$amounts = implode('&',$quantityArr);
-$size = 's&s&s';
-$totalPrice = 20;
-echo $OrdersController->addOrder($products,$amounts,$totalPrice,$size);
+function OnClickDelete($con){
+    $sql = "delete from currentorder";
+    $query =mysqli_query($con,$sql);
+    if($query){
+        echo "Done";
+    }else{
+        echo "Statement Error";
+    }
+}

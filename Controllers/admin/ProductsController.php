@@ -52,6 +52,20 @@ class ProductsController{
             return $records;
         }
     }
+
+    public function selectPriceWithId($id){
+        $selectWithId = "select * from products where id ='$id' ";
+        $query =mysqli_query($this->con,$selectWithId);
+        if($query){
+
+            $records = mysqli_fetch_all($query,MYSQLI_ASSOC);
+            return $records[0]['price'];
+        }else{
+            echo "Statement Error";
+            $records = null;
+            return $records;
+        }
+    }
     public function selectWithForignKey($key){
         $selectWithId = "select * from products where category_id ='$key' ";
         $query =mysqli_query($this->con,$selectWithId);

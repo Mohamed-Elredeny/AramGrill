@@ -18,7 +18,7 @@ require_once '../Interfaces/user/ordersPage.php';
 </head>
 
 <body style="background-image: url(../Resources/user/images/bg2.jpg);  background-size: cover;">
-<form action="order.php" method="">
+<form action="order.php" method="post">
     
     <nav style="margin-bottom:20px" dir="rtl" class="navbar navbar-expand-sm navbar-light bg-light">
         <div class="container-fluid">
@@ -89,8 +89,8 @@ require_once '../Interfaces/user/ordersPage.php';
             <!-- End of dropdown -->
         </div>
         <!-- table of orders -->
-        <div class="table-container col-7"  id="SelStdDep">
-            <table dir="rtl" class="table"  style="height: 500px">
+        <div class="table-container col-7"  id="SelStdDep" style="height: 500px">
+            <table dir="rtl" class="table">
                 <thead class="table-dark">
                     <tr style="height: 70px;">
                         <th>الرقم</th>
@@ -104,12 +104,13 @@ require_once '../Interfaces/user/ordersPage.php';
                         </th>
                     </tr>
                 </thead>
-                <tbody>
                 <?php
                 $total =0;
 
                 if(count(@$allMealInOneOrder) > 0){
                 for($i=0;$i<count(@$allMealInOneOrder);$i++){ ?>
+                <tbody style="height: 700px">
+
                 <tr>
                     <td width="30px"><?php echo ($i+1)?></td>
                     <td><?php echo $products->selectWithId($allMealInOneOrder[$i]['product_id'])[0]['name']?></td>
@@ -142,7 +143,12 @@ require_once '../Interfaces/user/ordersPage.php';
                     <td>
                         <input type="hidden" name="mealId" id="mealId<?php echo  $allMealInOneOrder[$i]['id'] ?>" value="<?php echo $allMealInOneOrder[$i]['id'] ?>">
 
-                        <button style="height : 32px; " type="button" class="btn btn-danger" id="btn2<?php echo $product['id']?>">X</button>
+                        <button style="height : 32px; " type="button" class="btn btn-danger" id="btn2">
+                            <a href="ajax/empty.php?request=deleteMealInOrder&id=<?php echo $allMealInOneOrder[$i]['id'] ?>">
+                                X
+                            </a>
+
+                        </button>
                     </td>
                 </tr>
 
@@ -162,8 +168,8 @@ require_once '../Interfaces/user/ordersPage.php';
                 </tbody>
             </table>
             <div style="width:100% ; text-align:center" >
-                <button type="button" class="btn btn-success" style="width:30%">تاكيد الطلب</button>
-                <button type="button" class="btn btn-danger" style="width:30%">حذف الطلب</button>
+                <button type="submit"  name="ConfirmOrder" class="btn btn-success" style="width:30%">تاكيد الطلب</button>
+                <button type="submit" name="DeleteOrder" class="btn btn-danger" style="width:30%">حذف الطلب</button>
             </div>
         </div>
         

@@ -143,12 +143,13 @@ require_once '../Interfaces/user/ordersPage.php';
                     <td>
                         <input type="hidden" name="mealId" id="mealId<?php echo  $allMealInOneOrder[$i]['id'] ?>" value="<?php echo $allMealInOneOrder[$i]['id'] ?>">
 
-                        <button style="height : 32px; " type="button" class="btn btn-danger" id="btn2">
                             <a href="ajax/empty.php?request=deleteMealInOrder&id=<?php echo $allMealInOneOrder[$i]['id'] ?>">
+                                <button style="height : 32px; " type="button" class="btn btn-danger" id="btn2">
                                 X
+                                </button>
+
                             </a>
 
-                        </button>
                     </td>
                 </tr>
 
